@@ -1,21 +1,25 @@
 {
-  "name": "notsaam-portfolio",
-  "type": "module",
+  "name": "flako-portfolio",
+  "private": true,
   "version": "1.0.0",
-  "description": "Portfolio profesional de Samuel Fuentes (NotSaam) — IA, sistemas y ciberseguridad.",
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "astro": "^4.16.18"
+    "framer-motion": "^12.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.1.6",
-    "@astrojs/tailwind": "^5.1.4",
-    "tailwindcss": "^3.4.17"
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.9.0",
+    "vite": "^7.0.0"
   }
 }

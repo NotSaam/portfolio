@@ -1,80 +1,104 @@
-# Portfolio — Samuel Fuentes (NotSaam)
+# Flako — Portfolio
 
-Portfolio profesional construido con **Astro + TailwindCSS**. Diseño premium (estilo
-Vercel / Linear / Stripe), modo oscuro, animaciones suaves, responsive, SEO optimizado
-y carga rápida (HTML estático, JS mínimo).
+Portfolio personal single-page: desarrollo de aplicaciones web + ciberseguridad.
 
-Capa de presentación independiente: **no toca el código de FLAKAI ni de FLK0S**.
+**Stack:** React 19 · Vite 7 · TypeScript · Tailwind CSS 4 · Framer Motion
 
-## Stack
+## Arrancar en local
 
-- **Astro 4** — generación estática, cero JS por defecto
-- **TailwindCSS 3** — diseño por tokens (variables CSS para claro/oscuro)
-- **@astrojs/sitemap** — sitemap automático para SEO
-- GitHub Actions → **GitHub Pages**
+Requisitos: Node.js 18+.
+
+```bash
+npm install
+npm run dev      # → http://localhost:5173
+```
+
+Otros comandos:
+
+```bash
+npm run build    # typecheck + build de producción en /dist
+npm run preview  # sirve la build de producción en local
+```
+
+## Editar el contenido
+
+Todo el texto, proyectos, habilidades y enlaces viven en **un solo fichero**:
+
+```
+src/data/content.ts
+```
+
+Busca los comentarios `← EDITAR` para localizar los placeholders pendientes:
+
+- **Email, GitHub y LinkedIn** en `contact`.
+- **Enlaces de demo/repo** de cada proyecto (`link` / `repo`).
+- **Textos de KAIR0S, FLAK0S y Reservas**: descripciones y tags con datos
+  plausibles; ajústalos a tu realidad (stack exacto, qué hace cada uno).
+- **Proyectos de ciberseguridad**: hay dos tarjetas con `placeholder: true`;
+  sustitúyelas por proyectos reales (quita el flag y rellena los campos).
+- **Habilidades de ciberseguridad**: grupo con `placeholder: true` en `skills`.
+
+## Demos interactivas
+
+Cada proyecto destacado lleva un campo `demo` (`"kairos" | "flakos" | "reservas"`).
+Si está presente, la tarjeta muestra **▶ Ver demo interactiva**, que abre un modal
+con una mini-UI **animada que se reproduce sola** (estilo clip de producto de
+LinkedIn, pero nativo e interactivo): marcador en vivo de KAIR0S, arranque del SO
+FLAK0S en una terminal, y el flujo de reserva de Reservas.
+
+- Las animaciones viven en `src/components/demos/` (una por proyecto).
+- Todas usan el reproductor por pasos `useAutoSteps` y respetan
+  `prefers-reduced-motion` (saltan al fotograma final sin animar).
+- **Añadir una demo nueva**: crea `XDemo.tsx` (copia la estructura de
+  `ReservasDemo.tsx`), regístrala en `demos/registry.ts`, añade su id al tipo
+  `DemoId` en `content.ts` y pon `demo: "x"` en el proyecto.
+- El modal vive en `DemoModal.tsx`: cierre con Esc / clic fuera, botón de
+  reinicio, y enlaces a `código` / `abrir →` cuando `repo`/`link` no son `#`.
 
 ## Estructura
 
 ```
 src/
-  components/   Navbar, Footer, Hero, Section, ProjectCard, TechCard,
-                TimelineItem, ContactCard, ThemeToggle
-  layouts/      BaseLayout.astro  (SEO, OG, JSON-LD, dark mode, reveal)
-  pages/        index, sobre-mi, proyectos/, proyectos/[slug],
-                experiencia, tecnologias, contacto
-  data/         profile.ts, projects.ts, tech.ts, experience.ts  (contenido)
-  lib/          url.ts  (helper de base path)
-  styles/       global.css  (tokens + utilidades)
-public/         favicon.svg, og.svg, robots.txt
-.github/workflows/deploy.yml
+├── data/content.ts        ← textos, proyectos, skills, enlaces (editar aquí)
+├── hooks/useTypewriter.ts ← efecto typing del hero
+├── components/
+│   ├── AuroraBackground   ← fondo animado (aurora + rejilla)
+│   ├── ScrollProgress     ← barra de progreso superior
+│   ├── Navbar / Footer
+│   ├── Hero               ← typing + spotlight que sigue al cursor
+│   ├── About              ← bio + tarjeta terminal
+│   ├── Projects / ProjectCard ← tarjetas con tilt 3D, glow y botón de demo
+│   ├── DemoModal          ← visor de demos interactivas (Esc / clic fuera)
+│   ├── demos/             ← una demo animada por proyecto + registro
+│   │   ├── useAutoSteps   ← reproductor por pasos (autoplay + reduce-motion)
+│   │   ├── registry       ← id de demo → componente
+│   │   ├── KairosDemo     ← marcador de fútbol en vivo
+│   │   ├── FlakosDemo     ← arranque del SO en terminal (QEMU)
+│   │   └── ReservasDemo   ← flujo de reserva en móvil
+│   ├── Skills             ← chips agrupados por área
+│   ├── Contact
+│   └── Reveal / MagneticButton / Section / SectionHeading (reutilizables)
+└── index.css              ← tokens de diseño (colores, fuentes) y keyframes
 ```
 
-Todo el **contenido** vive en `src/data/` — edita ahí, no en el markup.
+## Accesibilidad y rendimiento
 
-## Desarrollo
+- Todas las animaciones respetan `prefers-reduced-motion`.
+- HTML semántico, `aria-label` en iconos y navegación, foco visible.
+- Sin librerías pesadas: solo Framer Motion sobre React; animaciones de fondo
+  en CSS puro (GPU-friendly: `transform` + `filter`).
 
-```bash
-npm install
-npm run dev        # http://localhost:4321
-npm run build      # genera dist/
-npm run preview    # sirve el build
-```
+## Desplegar
 
-## Despliegue en GitHub Pages
+### Vercel
 
-### 1. Ajusta la base en `astro.config.mjs`
+1. Sube el repo a GitHub.
+2. En [vercel.com](https://vercel.com) → *New Project* → importa el repo.
+3. Framework preset: **Vite** (lo detecta solo). Build `npm run build`, output `dist`.
 
-| Caso | `SITE` | `BASE` |
-|------|--------|--------|
-| Repo de proyecto `github.com/NotSaam/portfolio` | `https://notsaam.github.io` | `/portfolio` |
-| Repo de usuario `github.com/NotSaam/notsaam.github.io` | `https://notsaam.github.io` | `/` |
+### Netlify
 
-(Por defecto está configurado como repo de proyecto `portfolio`.)
+1. *New site from Git* → selecciona el repo.
+2. Build command: `npm run build` · Publish directory: `dist`.
 
-### 2. Sube el repo
-
-```bash
-git init
-git add .
-git commit -m "feat: portfolio Astro"
-git branch -M main
-git remote add origin https://github.com/NotSaam/portfolio.git
-git push -u origin main
-```
-
-### 3. Activa Pages
-
-En GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-
-Cada `push` a `main` ejecuta el workflow `.github/workflows/deploy.yml` y publica el sitio.
-
-## Personalización
-
-- **Textos / proyectos / stack** → `src/data/*.ts`
-- **Email de contacto** → `profile.links.email` en `src/data/profile.ts` (vacío = oculto)
-- **Colores / tipografía** → `tailwind.config.js` y tokens en `src/styles/global.css`
-
-## Notas
-
-Contenido redactado solo con información pública (GitHub @NotSaam) y la documentación de
-los proyectos. Sin titulaciones, cargos ni certificaciones inventados.
+En ambos casos no hace falta configuración extra: es un sitio 100% estático.

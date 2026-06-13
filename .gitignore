@@ -1,19 +1,14 @@
+# deps
+node_modules
+
 # build output
-dist/
-.output/
+dist
+.vercel
 
-# dependencies
-node_modules/
-
-# astro
-.astro/
-
-# logs & env
-*.log
+# local / env (nunca subir secretos)
+*.local
 .env
-.env.production
-.DS_Store
+.env.*
 
-# editor
-.vscode/
-.idea/
+# os
+.DS_Store
