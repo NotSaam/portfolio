@@ -7,7 +7,7 @@ import { EASE_SIGNATURE, T_QUICK, SPRING_SNAPPY } from "../../lib/motion";
  * Demo: app WEB de reservas de clases particulares ("ClaseYa").
  * Layout de escritorio (cabecera + calendario/agenda + panel de reserva),
  * coherente con las demás demos. Flujo real: elegir día en el calendario →
- * franja horaria → confirmar → éxito en tiempo real (toast WebSocket).
+ * franja horaria → confirmar → solicitud enviada al profesor (toast).
  * Autoplay en bucle; fotograma final coherente (confirmado + toast) si reduce.
  *
  * Contrato común:
@@ -231,7 +231,7 @@ export default function ReservasDemo({ playing = true }: DemoProps) {
           </div>
         </div>
 
-        {/* Toast en tiempo real (vibe WebSocket) */}
+        {/* Toast en tiempo real (solicitud enviada) */}
         <AnimatePresence>
           {done && (
             <motion.div
@@ -244,8 +244,8 @@ export default function ReservasDemo({ playing = true }: DemoProps) {
               <p className="flex items-start gap-2 text-[11px] leading-tight text-ink">
                 <span className="pulse-ring mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-teal-neon" />
                 <span>
-                  <span className="font-medium">Profesor notificado vía WebSocket</span>
-                  <span className="block text-[10px] text-muted">recibirás un recordatorio</span>
+                  <span className="font-medium">Solicitud enviada al profesor</span>
+                  <span className="block text-[10px] text-muted">te avisamos por email al aceptarla</span>
                 </span>
               </p>
             </motion.div>

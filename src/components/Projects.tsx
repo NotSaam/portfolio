@@ -13,14 +13,15 @@ export default function Projects() {
   const [active, setActive] = useState<Project | null>(null);
 
   const featured = site.projects.find((p) => p.featured);
-  const rest = site.projects.filter((p) => p !== featured);
+  const dream = site.projects.find((p) => p.dream);
+  const rest = site.projects.filter((p) => p !== featured && p !== dream);
 
   return (
     <Section id="proyectos">
       <SectionHeading
         index="03"
         title="Proyectos"
-        subtitle="Productos reales, no maquetas. Cada tarjeta lleva una demo que recrea la app de verdad y se reproduce sola; pulsa para abrirla a tamaño completo."
+        subtitle="Productos reales, no maquetas. Primero el que está en producción, al final el que más me ilusiona. Cada tarjeta lleva una demo que recrea la app y se reproduce sola; pulsa para abrirla a tamaño completo."
       />
 
       <motion.div
@@ -45,6 +46,12 @@ export default function Projects() {
             />
           </motion.div>
         ))}
+
+        {dream && (
+          <motion.div variants={staggerItem} className="sm:col-span-2">
+            <ProjectCard project={dream} featured={false} onOpen={() => setActive(dream)} />
+          </motion.div>
+        )}
       </motion.div>
 
       <DemoModal project={active} onClose={() => setActive(null)} />
