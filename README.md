@@ -20,6 +20,7 @@ Otros comandos:
 ```bash
 npm run build    # typecheck + build de producción en /dist
 npm run preview  # sirve la build de producción en local
+npm test         # tests con Vitest + React Testing Library
 ```
 
 ## Editar el contenido
