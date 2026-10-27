@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════════════════
+   SISTEMA DE DISEÑO — "Sala de control / terminal futurista"
+   UN acento manda: TEAL primario · violeta secundario · azul para detalles.
+   Base casi negra, detalle HUD con mesura. Identidad alineada con el producto
+   real FLK0S (cyan/teal #22d3ee + violeta #7c3aed).
+   Para cambiar la identidad, toca SOLO este bloque.
+   ════════════════════════════════════════════════════════════════════════ */
+@theme {
+  /* Superficies (de más oscuro a más claro) */
+  --color-night: #06060a;
+  --color-panel: #0b0b12;
+  --color-panel-2: #11111c;
+  --color-line: #1c1c2b;
+  --color-line-bright: #2c2c44;
+
+  /* Texto */
+  --color-ink: #e9e9f3;
+  --color-muted: #8a8aa0;
+  --color-faint: #54546a;
+
+  /* Acento PRIMARIO: teal */
+  --color-accent: #2dd4bf;
+  --color-accent-deep: #0d9488;
+  --color-teal-neon: #2dd4bf;
+  /* Acento SECUNDARIO: violeta */
+  --color-violet: #8b5cf6;
+  --color-violet-deep: #7c3aed;
+  /* Detalle: azul */
+  --color-blue-neon: #38bdf8;
+
+  /* Tipografía: grotesk con carácter + mono terminal */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Easing FIRMA — el alma del movimiento. Igual que src/lib/motion.ts */
+  --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-night font-sans text-ink antialiased;
+  /* Resplandor ambiental fijo: teal manda, un toque violeta de apoyo */
+  background-image:
+    radial-gradient(60vw 50vh at 50% -10%, rgba(45, 212, 191, 0.12), transparent 70%),
+    radial-gradient(45vw 38vh at 100% 8%, rgba(124, 58, 237, 0.08), transparent 70%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  color: var(--color-ink);
+}
+
+/* Foco visible coherente y accesible en TODA la web */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #23233a;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2f2f4d;
+}
+
+/* ─── Texto con degradado animado (teal-led, legible sobre fondo oscuro) ─── */
+.text-gradient-animated {
+  background: linear-gradient(90deg, #2dd4bf, #38bdf8, #a78bfa, #2dd4bf);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 8s ease-in-out infinite alternate;
+}
+@keyframes gradient-pan {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* ─── Cursor parpadeante (typing / terminal) ───────────────────────────── */
+.type-cursor {
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ─── Glitch SUTIL para el nombre del hero (sin comprometer legibilidad) ── */
+/* Uso: <span class="glitch" data-text="Flako">Flako</span> */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0.35;
+}
+.glitch::before {
+  left: 1px;
+  text-shadow: -1px 0 var(--color-blue-neon);
+  animation: glitch-top 5s steps(2, end) infinite;
+}
+.glitch::after {
+  left: -1px;
+  text-shadow: -1px 0 var(--color-teal-neon);
+  animation: glitch-bottom 4.2s steps(2, end) infinite;
+}
+@keyframes glitch-top {
+  0%, 78%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  80% { clip-path: inset(0 0 62% 0); transform: translate(-2px, -1px); }
+  84% { clip-path: inset(8% 0 64% 0); transform: translate(2px, 1px); }
+  88% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+}
+@keyframes glitch-bottom {
+  0%, 70%, 100% { clip-path: inset(100% 0 0 0); transform: translate(0); }
+  72% { clip-path: inset(72% 0 0 0); transform: translate(2px, 1px); }
+  76% { clip-path: inset(64% 0 6% 0); transform: translate(-2px, -1px); }
+  80% { clip-path: inset(100% 0 0 0); transform: translate(0); }
+}
+
+/* ─── Rejilla de "sala de control" (HUD) — líneas teal muy tenues ───────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+}
+
+/* ─── Scanlines CRT muy sutiles (reutilizable) ─────────────────────────── */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Ruido tenue (textura de superficie) ──────────────────────────────── */
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Marco HUD con esquinas (líneas finas tipo visor) ─────────────────── */
+.hud-corners {
+  position: relative;
+}
+.hud-corners::before,
+.hud-corners::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border-style: solid;
+  pointer-events: none;
+}
+.hud-corners::before {
+  top: 8px;
+  left: 8px;
+  border-width: 1px 0 0 1px;
+}
+.hud-corners::after {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 1px 1px 0;
+}
+
+/* ─── Etiqueta mono tipo HUD ───────────────────────────────────────────── */
+.hud-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ─── Glows reutilizables ──────────────────────────────────────────────── */
+.glow-accent { box-shadow: 0 0 30px rgba(45, 212, 191, 0.32); }
+.glow-violet { box-shadow: 0 0 30px rgba(139, 92, 246, 0.28); }
+
+/* ─── Aurora de fondo: teal manda, violeta de apoyo, azul de detalle ────── */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  will-change: transform;
+}
+.aurora-1 {
+  width: 52vw; height: 52vw; left: -10vw; top: -16vw;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.42), transparent 65%);
+  animation: drift-1 28s ease-in-out infinite alternate;
+}
+.aurora-2 {
+  width: 42vw; height: 42vw; right: -12vw; top: 24vh;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 65%);
+  animation: drift-2 34s ease-in-out infinite alternate;
+}
+.aurora-3 {
+  width: 40vw; height: 40vw; left: 30vw; bottom: -20vw;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent 65%);
+  animation: drift-3 40s ease-in-out infinite alternate;
+}
+@keyframes drift-1 { to { transform: translate(10vw, 9vh) scale(1.12); } }
+@keyframes drift-2 { to { transform: translate(-9vw, -7vh) scale(1.18); } }
+@keyframes drift-3 { to { transform: translate(7vw, -9vh) scale(0.92); } }
+
+/* ─── Latido sutil (badges "en vivo", indicadores) ─────────────────────── */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(45, 212, 191, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
+}
+.pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+/* ─── Accesibilidad: sin animaciones si el usuario las desactiva ───────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .aurora-blob,
+  .text-gradient-animated,
+  .type-cursor,
+  .glitch::before,
+  .glitch::after,
+  .pulse-ring {
+    animation: none !important;
+  }
+  .glitch::before,
+  .glitch::after { display: none; }
+}
