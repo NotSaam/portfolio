@@ -159,7 +159,7 @@ export const site = {
         "Kanban colaborativo sin registro: compartes el enlace y trabajáis a la vez con cursores en vivo, avatares de presencia y aviso de quién edita cada tarjeta. UI optimista con patches idempotentes, ordenación fraccional para mover tarjetas tocando una sola fila y servidor Socket.IO propio que valida cada operación con Zod, aísla tableros (anti-IDOR) y aplica rate limiting. 17 tests, incluido uno de integración con dos clientes reales.",
       tags: ["Next.js 15", "React 19", "TypeScript", "Socket.IO", "SQLite · Drizzle", "Zod", "dnd-kit", "Vitest"],
       demo: "synk0s",
-      repo: "https://github.com/NotSaam/synk0s",
+      repo: "https://github.com/NotSaam/SYNK0S",
     },
     {
       kind: "Ciberseguridad · SOC",
