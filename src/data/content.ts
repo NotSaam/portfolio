@@ -6,7 +6,7 @@
  */
 
 /** Identificadores de las demos interactivas (animadas en navegador). */
-export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s";
+export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s" | "synk0s";
 
 export interface Project {
   /** Etiqueta pequeña sobre el título (p. ej. "App web", "Ciberseguridad") */
@@ -92,7 +92,7 @@ export const site = {
       { cmd: true, text: "cat stack.txt" },
       { cmd: false, text: "next · react · python · fastapi · postgres · supabase · rust" },
       { cmd: true, text: "ls ~/proyectos" },
-      { cmd: false, text: "kair0s/  krit0s/  flk0s/  reservas/  flkos/" },
+      { cmd: false, text: "kair0s/  krit0s/  synk0s/  flk0s/  reservas/  flkos/" },
       { cmd: true, text: "status --formacion" },
       { cmd: false, text: "máster en ciberseguridad [█████░░ en curso]" },
     ],
@@ -149,6 +149,18 @@ export const site = {
       demo: "krit0s",
       repo: "https://github.com/NotSaam/KRIT0S",
       link: "https://krit0s.vercel.app",
+    },
+    {
+      kind: "App web · Tiempo real",
+      title: "SYNK0S",
+      problem:
+        "Tableros que hay que recargar para ver lo que hizo el equipo → un kanban donde cada cambio llega al resto en milisegundos.",
+      description:
+        "Kanban colaborativo sin registro: compartes el enlace y trabajáis a la vez con cursores en vivo, avatares de presencia y aviso de quién edita cada tarjeta. UI optimista con patches idempotentes, ordenación fraccional para mover tarjetas tocando una sola fila y servidor Socket.IO propio que valida cada operación con Zod, aísla tableros (anti-IDOR) y aplica rate limiting. 17 tests, incluido uno de integración con dos clientes reales.",
+      tags: ["Next.js 15", "React 19", "TypeScript", "Socket.IO", "SQLite · Drizzle", "Zod", "dnd-kit", "Vitest"],
+      demo: "synk0s",
+      repo: "https://github.com/NotSaam/SYNK0S",
+      link: "https://synk0s.onrender.com",
     },
     {
       kind: "Ciberseguridad · SOC",
