@@ -160,6 +160,7 @@ export const site = {
       tags: ["Next.js 15", "React 19", "TypeScript", "Socket.IO", "SQLite · Drizzle", "Zod", "dnd-kit", "Vitest"],
       demo: "synk0s",
       repo: "https://github.com/NotSaam/SYNK0S",
+      link: "https://synk0s.onrender.com",
     },
     {
       kind: "Ciberseguridad · SOC",
