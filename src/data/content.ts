@@ -6,7 +6,7 @@
  */
 
 /** Identificadores de las demos interactivas (animadas en navegador). */
-export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas";
+export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s";
 
 export interface Project {
   /** Etiqueta pequeña sobre el título (p. ej. "App web", "Ciberseguridad") */
@@ -92,7 +92,7 @@ export const site = {
       { cmd: true, text: "cat stack.txt" },
       { cmd: false, text: "next · react · python · fastapi · postgres · supabase · rust" },
       { cmd: true, text: "ls ~/proyectos" },
-      { cmd: false, text: "kair0s/  flk0s/  reservas/  flkos/" },
+      { cmd: false, text: "kair0s/  krit0s/  flk0s/  reservas/  flkos/" },
       { cmd: true, text: "status --formacion" },
       { cmd: false, text: "máster en ciberseguridad [█████░░ en curso]" },
     ],
@@ -137,6 +137,18 @@ export const site = {
       featured: true,
       repo: "https://github.com/NotSaam/kair0s-showcase",
       link: "https://kair0s.es/r/web",
+    },
+    {
+      kind: "Ciberseguridad · Reporting de pentest",
+      title: "KRIT0S",
+      problem:
+        "Informes de pentest en Word y CVSS calculado a mano → del hallazgo al veredicto en una sola plataforma.",
+      description:
+        "Plataforma full-stack para consultoras de seguridad: proyectos con alcance y equipo, hallazgos puntuados con una calculadora CVSS 3.1 que el servidor recalcula siempre, biblioteca de plantillas OWASP y PDF generado en una cola Redis como versión inmutable con huella SHA-256. RBAC con Policies (admin, pentester y cliente con portal de solo lectura) y auditoría append-only. 60 tests Pest y CI sobre PostgreSQL real.",
+      tags: ["Laravel 12", "Vue 3", "Inertia", "TypeScript", "PostgreSQL", "Redis", "Pest", "Docker"],
+      demo: "krit0s",
+      repo: "https://github.com/NotSaam/KRIT0S",
+      link: "https://krit0s.vercel.app",
     },
     {
       kind: "Ciberseguridad · SOC",
@@ -186,12 +198,12 @@ export const site = {
     {
       area: "Frontend",
       tagline: "Interfaces rápidas y accesibles",
-      skills: ["Next.js", "React", "TypeScript", "Tailwind"],
+      skills: ["Next.js", "React", "Vue", "TypeScript", "Tailwind"],
     },
     {
       area: "Backend",
       tagline: "APIs y datos",
-      skills: ["Python", "FastAPI", "PostgreSQL", "Supabase", "Redis"],
+      skills: ["Python", "FastAPI", "PHP · Laravel", "PostgreSQL", "Supabase", "Redis"],
     },
     {
       area: "IA",
