@@ -4,7 +4,7 @@ import { useAutoSteps } from "./useAutoSteps";
 import { EASE_SIGNATURE, T_QUICK, SPRING_SNAPPY } from "../../lib/motion";
 
 /**
- * Demo animada de flkOS — mi SO de escritorio: escritorio FLK sobre Wayland,
+ * Demo animada de Flak0S —mi SO de escritorio: escritorio FLK sobre Wayland,
  * servicios propios en Rust (flkd, flk-update, flk-snapshots) y apps propias.
  *
  * Recorrido: ARRANQUE (wordmark + servicios [ ok ]) → ESCRITORIO (panel + dock)
@@ -65,7 +65,7 @@ export default function FlakosDemo({ playing = true }: DemoProps) {
               className="absolute inset-0 flex flex-col items-center justify-center gap-5 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.18),transparent_65%)]"
             >
               <p className="font-display text-4xl font-bold tracking-tight text-ink">
-                flk<span className="text-violet">OS</span>
+                Flak<span className="text-violet">0</span>S
               </p>
               <div className="h-0.5 w-40 overflow-hidden rounded-full bg-line">
                 <motion.div
@@ -101,7 +101,7 @@ export default function FlakosDemo({ playing = true }: DemoProps) {
               {/* Panel superior */}
               <div className="flex h-7 items-center justify-between border-b border-white/5 bg-night/60 px-3 font-mono text-[10px] text-muted backdrop-blur">
                 <span className="font-display font-bold text-ink">
-                  flk<span className="text-violet">OS</span>
+                  Flak<span className="text-violet">0</span>S
                 </span>
                 <span className="text-ink">sáb 24 oct · 18:42</span>
                 <span className="flex items-center gap-2">

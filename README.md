@@ -35,7 +35,7 @@ Busca los comentarios `← EDITAR` para localizar los placeholders pendientes:
 
 - **Email, GitHub y LinkedIn** en `contact`.
 - **Enlaces de demo/repo** de cada proyecto (`link` / `repo`).
-- **Textos de KAIR0S, flkOS y Reservas**: descripciones y tags con datos
+- **Textos de KAIR0S, Flak0S y MENT0R**: descripciones y tags con datos
   plausibles; ajústalos a tu realidad (stack exacto, qué hace cada uno).
 - **Proyectos de ciberseguridad**: hay dos tarjetas con `placeholder: true`;
   sustitúyelas por proyectos reales (quita el flag y rellena los campos).
@@ -47,7 +47,7 @@ Cada proyecto destacado lleva un campo `demo` (`"kairos" | "flakos" | "reservas"
 Si está presente, la tarjeta muestra **▶ Ver demo interactiva**, que abre un modal
 con una mini-UI **animada que se reproduce sola** (estilo clip de producto de
 LinkedIn, pero nativo e interactivo): marcador en vivo de KAIR0S, arranque del SO
-flkOS en su escritorio, y el flujo de reserva de Reservas.
+Flak0S en su escritorio, y el flujo de reserva de MENT0R.
 
 - Las animaciones viven en `src/components/demos/` (una por proyecto).
 - Todas usan el reproductor por pasos `useAutoSteps` y respetan

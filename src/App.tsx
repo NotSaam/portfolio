@@ -10,6 +10,8 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import SectionHud from "./components/SectionHud";
+import CommandBar from "./components/CommandBar";
 
 export default function App() {
   return (
@@ -19,6 +21,7 @@ export default function App() {
       <ScrollProgress />
       <CommandPalette />
       <Navbar />
+      <SectionHud />
       <main>
         <Hero />
         <About />
@@ -28,6 +31,9 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      {/* Hueco para que la barra de comandos fija no tape el final del footer */}
+      <div aria-hidden className="h-12" />
+      <CommandBar />
     </>
   );
 }

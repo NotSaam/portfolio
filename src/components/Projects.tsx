@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { site } from "../data/content";
 import type { Project } from "../data/content";
@@ -8,9 +8,23 @@ import SectionHeading from "./SectionHeading";
 import ProjectCard from "./ProjectCard";
 import DemoModal from "./DemoModal";
 
+/** Evento global para abrir la demo de un proyecto desde fuera (barra de comandos). */
+export const OPEN_DEMO_EVENT = "open-project-demo";
+
 export default function Projects() {
   const reduce = useReducedMotion();
   const [active, setActive] = useState<Project | null>(null);
+
+  // La barra de comandos abre demos con `kair0s`, `phar0s`… (detail = cmd).
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const cmd = (e as CustomEvent<string>).detail;
+      const project = site.projects.find((p) => p.cmd === cmd);
+      if (project) setActive(project);
+    };
+    window.addEventListener(OPEN_DEMO_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_DEMO_EVENT, onOpen);
+  }, []);
 
   const featured = site.projects.find((p) => p.featured);
   const dream = site.projects.find((p) => p.dream);

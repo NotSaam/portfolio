@@ -34,7 +34,21 @@ export interface Project {
   dream?: boolean;
   /** Hitos de la hoja de ruta (solo dream). */
   roadmap?: { id: string; label: string; state: "done" | "doing" | "next" }[];
+  /** Estado real del proyecto: lo muestran el HUD lateral y la barra de comandos. */
+  status: { label: string; tone: "live" | "rc" | "mvp" | "wip" };
+  /** Comando corto de la barra (p. ej. "kair0s"). */
+  cmd: string;
 }
+
+/** Secciones en orden de página: las usan el HUD y la barra de comandos. */
+export const sections = [
+  { id: "inicio", index: "00", label: "inicio" },
+  { id: "sobre-mi", index: "01", label: "sobre-mí" },
+  { id: "enfoque", index: "02", label: "enfoque" },
+  { id: "proyectos", index: "03", label: "proyectos" },
+  { id: "habilidades", index: "04", label: "stack" },
+  { id: "contacto", index: "05", label: "contacto" },
+] as const;
 
 export interface SkillGroup {
   area: string;
@@ -82,7 +96,7 @@ export const site = {
   about: {
     paragraphs: [
       "Soy Samuel —Flako—, Full-Stack Engineer. Construyo productos completos de extremo a extremo: del modelo de datos y la API hasta la interfaz, pasando por la IA y la seguridad. Trabajo sobre todo con Python, FastAPI y el ecosistema React/Next.js.",
-      "Mi proyecto principal es KAIR0S, una plataforma SaaS multi-club de carga, lesiones y vídeo para equipos de fútbol, ya en producción. Antes construí FLK0S, un ecosistema de operaciones de ciberseguridad con SSO, MFA y RBAC, y en paralelo persigo el proyecto soñado: flkOS, mi propio sistema operativo, hecho a mi gusto y optimizado.",
+      "Mi proyecto principal es KAIR0S, una plataforma SaaS multi-club de carga, lesiones y vídeo para equipos de fútbol, ya en producción. Antes construí PHAR0S, un ecosistema de operaciones de ciberseguridad con SSO, MFA y RBAC, y en paralelo persigo el proyecto soñado: Flak0S, mi propio sistema operativo, hecho a mi gusto y optimizado.",
       "Curso un máster en ciberseguridad: una mirada ofensiva y defensiva que aplico a todo lo que construyo. Código que funciona y, además, resiste.",
     ],
     /** Líneas de la tarjeta tipo terminal. cmd=true → línea de comando */
@@ -92,7 +106,7 @@ export const site = {
       { cmd: true, text: "cat stack.txt" },
       { cmd: false, text: "next · react · python · fastapi · postgres · supabase · rust" },
       { cmd: true, text: "ls ~/proyectos" },
-      { cmd: false, text: "kair0s/  krit0s/  synk0s/  flk0s/  reservas/  flkos/" },
+      { cmd: false, text: "kair0s/  krit0s/  synk0s/  phar0s/  ment0r/  flak0s/" },
       { cmd: true, text: "status --formacion" },
       { cmd: false, text: "máster en ciberseguridad [█████░░ en curso]" },
     ],
@@ -135,6 +149,8 @@ export const site = {
       ],
       demo: "kairos",
       featured: true,
+      status: { label: "en producción", tone: "live" },
+      cmd: "kair0s",
       repo: "https://github.com/NotSaam/kair0s-showcase",
       link: "https://kair0s.es/r/web",
     },
@@ -147,6 +163,8 @@ export const site = {
         "Plataforma full-stack para consultoras de seguridad: proyectos con alcance y equipo, hallazgos puntuados con una calculadora CVSS 3.1 que el servidor recalcula siempre, biblioteca de plantillas OWASP y PDF generado en una cola Redis como versión inmutable con huella SHA-256. RBAC con Policies (admin, pentester y cliente con portal de solo lectura) y auditoría append-only. 60 tests Pest y CI sobre PostgreSQL real.",
       tags: ["Laravel 12", "Vue 3", "Inertia", "TypeScript", "PostgreSQL", "Redis", "Pest", "Docker"],
       demo: "krit0s",
+      status: { label: "MVP · v1", tone: "mvp" },
+      cmd: "krit0s",
       repo: "https://github.com/NotSaam/KRIT0S",
       link: "https://krit0s.vercel.app",
     },
@@ -159,33 +177,39 @@ export const site = {
         "Kanban colaborativo sin registro: compartes el enlace y trabajáis a la vez con cursores en vivo, avatares de presencia y aviso de quién edita cada tarjeta. UI optimista con patches idempotentes, ordenación fraccional para mover tarjetas tocando una sola fila y servidor Socket.IO propio que valida cada operación con Zod, aísla tableros (anti-IDOR) y aplica rate limiting. 17 tests, incluido uno de integración con dos clientes reales.",
       tags: ["Next.js 15", "React 19", "TypeScript", "Socket.IO", "SQLite · Drizzle", "Zod", "dnd-kit", "Vitest"],
       demo: "synk0s",
+      status: { label: "demo en vivo", tone: "live" },
+      cmd: "synk0s",
       repo: "https://github.com/NotSaam/SYNK0S",
       link: "https://synk0s.onrender.com",
     },
     {
       kind: "Ciberseguridad · SOC",
-      title: "FLK0S",
+      title: "PHAR0S",
       problem:
         "5 herramientas de seguridad inconexas → un solo ecosistema con SSO, IA y observabilidad e2e.",
       description:
         "Ecosistema unificado de operaciones de ciberseguridad: Blue Team (detección como código, MITRE ATT&CK, conectores SIEM), Red Team con agentes de IA, copiloto con RAG y reporting CVSS, todo bajo un único SSO con MFA y RBAC. Release Candidate v1.0.",
       tags: ["Next.js 14", "FastAPI", "PostgreSQL", "Docker", "OpenTelemetry", "SSO/MFA"],
       demo: "flk0s",
+      status: { label: "RC v1.0", tone: "rc" },
+      cmd: "phar0s",
       repo: "https://github.com/NotSaam/FLK0S-Ecosystem",
     },
     {
-      kind: "App web · Reservas",
-      title: "Reserva de clases con profesores",
+      kind: "App web · Reserva de clases",
+      title: "MENT0R",
       problem:
         "Cuadrar horarios profe–familia por chat es un caos → reservas con disponibilidad real y confirmación al instante.",
       description:
         "Las familias eligen asignatura, franja libre y modalidad (online o presencial) en un asistente paso a paso; el profesor acepta o rechaza desde su panel y cada paso llega por email. Control transaccional contra dobles reservas y cancelación con enlace único.",
       tags: ["Next.js 16", "TypeScript", "Prisma", "Auth.js", "Zod", "Tailwind"],
       demo: "reservas",
+      status: { label: "MVP", tone: "mvp" },
+      cmd: "ment0r",
     },
     {
       kind: "Sistema operativo · El proyecto soñado",
-      title: "flkOS",
+      title: "Flak0S",
       wip: true,
       dream: true,
       problem:
@@ -203,6 +227,8 @@ export const site = {
         { id: "M6", label: "Uso diario", state: "next" },
       ],
       demo: "flakos",
+      status: { label: "M2 · escritorio", tone: "wip" },
+      cmd: "flak0s",
     },
   ] satisfies Project[] as Project[],
 

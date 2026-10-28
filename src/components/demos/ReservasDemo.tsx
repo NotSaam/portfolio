@@ -4,7 +4,7 @@ import { useAutoSteps } from "./useAutoSteps";
 import { EASE_SIGNATURE, T_QUICK, SPRING_SNAPPY } from "../../lib/motion";
 
 /**
- * Demo: app WEB de reservas de clases particulares ("ClaseYa").
+ * Demo: MENT0R, app web de reservas de clases particulares.
  * Layout de escritorio (cabecera + calendario/agenda + panel de reserva),
  * coherente con las demás demos. Flujo real: elegir día en el calendario →
  * franja horaria → confirmar → solicitud enviada al profesor (toast).
@@ -52,7 +52,7 @@ export default function ReservasDemo({ playing = true }: DemoProps) {
         <div className="flex shrink-0 items-center justify-between border-b border-line bg-panel-2/70 px-4 py-2.5">
           <div className="flex items-center gap-2.5">
             <span className="font-display text-sm font-bold tracking-tight text-ink">
-              Clase<span className="text-accent">Ya</span>
+              MENT<span className="text-accent">0</span>R
             </span>
             <span className="font-mono text-[10px] text-faint">/ reservar clase</span>
           </div>

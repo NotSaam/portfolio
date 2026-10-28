@@ -53,7 +53,7 @@ describe("CommandPalette", () => {
     await user.type(screen.getByLabelText("Buscar"), "rust");
     const options = screen.getAllByRole("option");
     expect(options).toHaveLength(1);
-    expect(options[0]).toHaveTextContent("flkOS");
+    expect(options[0]).toHaveTextContent("Flak0S");
   });
 
   it("muestra un aviso cuando no hay resultados", async () => {

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Project } from "../data/content";
 import { T_QUICK } from "../lib/motion";
 import ProjectPreview from "./ProjectPreview";
+import ScrambleText from "./ScrambleText";
 
 interface ProjectCardProps {
   project: Project;
@@ -217,14 +218,7 @@ export default function ProjectCard({ project, featured, onOpen }: ProjectCardPr
           </div>
           <h3 className="font-display text-[clamp(2.5rem,7vw,4rem)] leading-none font-bold tracking-tight">
             {/* El "0" de la marca, en acento: así no se lee como una O */}
-            {project.title.split("0").map((part, i) =>
-              i === 0 ? part : (
-                <span key={i}>
-                  <span className="text-accent">0</span>
-                  {part}
-                </span>
-              ),
-            )}
+            <ScrambleText text={project.title} zeroClass="text-accent" duration={900} />
           </h3>
           <Problem text={project.problem} featured />
           <p className="text-sm leading-relaxed text-muted">{project.description}</p>
@@ -255,7 +249,7 @@ export default function ProjectCard({ project, featured, onOpen }: ProjectCardPr
         <div className="relative z-10 flex min-w-0 flex-col gap-4 lg:order-1">
           <Header project={project} />
           <h3 className="font-display text-[clamp(2.25rem,6vw,3.5rem)] leading-none font-bold tracking-tight">
-            flk<span className="text-violet">OS</span>
+            <ScrambleText text={project.title} zeroClass="text-violet" duration={900} />
           </h3>
           <p className="relative border-l-2 border-violet pl-3.5 text-base font-medium leading-relaxed text-balance text-ink md:text-lg">
             {project.problem}
@@ -285,7 +279,9 @@ export default function ProjectCard({ project, featured, onOpen }: ProjectCardPr
       </div>
       <div className="relative z-10 flex min-w-0 flex-1 flex-col gap-3">
         <Header project={project} />
-        <h3 className="font-display text-xl font-semibold text-balance">{project.title}</h3>
+        <h3 className="font-display text-xl font-semibold text-balance">
+          <ScrambleText text={project.title} zeroClass="text-accent" />
+        </h3>
         <Problem text={project.problem} />
         <p className="line-clamp-2 text-sm leading-relaxed text-muted">{project.description}</p>
         <Tags tags={project.tags} />

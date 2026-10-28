@@ -5,7 +5,7 @@ import type { DemoProps } from "./types";
 import { EASE_SIGNATURE, SPRING_SNAPPY } from "../../lib/motion";
 
 /**
- * FLK0S · Centro de Operaciones (SOC). Réplica fiel del producto real
+ * PHAR0S (antes FLK0S) · Centro de Operaciones (SOC). Réplica fiel del producto real
  * (github.com/NotSaam/FLK0S-Ecosystem): login SSO → MFA → hub Centro de
  * Operaciones → feed de amenazas → Blue Team (CDP) ⇄ Red Team (RT) → triaje
  * por Copilot IA → observabilidad e2e (frame final). Teal = defensa/primario,
@@ -21,10 +21,10 @@ const CRIT = "#f87171";
 const HIGH = "#fbbf24";
 
 const PRODUCTS = [
-  { id: "CDP", name: "FLK0S-CDP", desc: "SOC · alertas, casos, threat intel" },
-  { id: "RT", name: "FLK0S-RT", desc: "Red Team · campañas, C2, lateral" },
-  { id: "AI", name: "FLK0S-AI", desc: "Copilot · IOC, hunting assist" },
-  { id: "REP", name: "FLK0S-Reportes", desc: "Engagements · findings, evidence" },
+  { id: "CDP", name: "PHAR0S-CDP", desc: "SOC · alertas, casos, threat intel" },
+  { id: "RT", name: "PHAR0S-RT", desc: "Red Team · campañas, C2, lateral" },
+  { id: "AI", name: "PHAR0S-AI", desc: "Copilot · IOC, hunting assist" },
+  { id: "REP", name: "PHAR0S-Reportes", desc: "Engagements · findings, evidence" },
 ] as const;
 
 const KPIS = [
@@ -63,7 +63,7 @@ export default function FlkosSocDemo({ playing = true }: DemoProps) {
         {/* Barra superior de ventana */}
         <div className="flex shrink-0 items-center justify-between border-b border-line bg-panel-2/70 px-4 py-2.5">
           <span className="font-mono text-[11px] tracking-wide text-ink">
-            FLK<span className="text-accent">0</span>S · Centro de Operaciones
+            PHAR<span className="text-accent">0</span>S · Centro de Operaciones
           </span>
           {screen === "soc" && (
             <span className="font-mono text-[10px] text-muted">
@@ -80,7 +80,7 @@ export default function FlkosSocDemo({ playing = true }: DemoProps) {
                 <div className="grid h-full grid-cols-2">
                   <div className="flex flex-col justify-center gap-3 border-r border-line p-6">
                     <p className="font-display text-2xl font-bold text-ink">
-                      FLK<span className="text-accent">0</span>S
+                      PHAR<span className="text-accent">0</span>S
                     </p>
                     <p className="text-xs text-muted">Cybersecurity Operations Platform — un solo ecosistema, no cinco herramientas.</p>
                     <ul className="mt-2 space-y-1.5">
