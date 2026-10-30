@@ -6,7 +6,7 @@
  */
 
 /** Identificadores de las demos interactivas (animadas en navegador). */
-export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s" | "synk0s";
+export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s" | "synk0s" | "pont0s";
 
 export interface Project {
   /** Etiqueta pequeña sobre el título (p. ej. "App web", "Ciberseguridad") */
@@ -106,7 +106,7 @@ export const site = {
       { cmd: true, text: "cat stack.txt" },
       { cmd: false, text: "next · react · python · fastapi · postgres · supabase · rust" },
       { cmd: true, text: "ls ~/proyectos" },
-      { cmd: false, text: "kair0s/  krit0s/  synk0s/  phar0s/  ment0r/  flak0s/" },
+      { cmd: false, text: "kair0s/  krit0s/  synk0s/  pont0s/  phar0s/  ment0r/  flak0s/" },
       { cmd: true, text: "status --formacion" },
       { cmd: false, text: "máster en ciberseguridad [█████░░ en curso]" },
     ],
@@ -181,6 +181,20 @@ export const site = {
       cmd: "synk0s",
       repo: "https://github.com/NotSaam/SYNK0S",
       link: "https://synk0s.onrender.com",
+    },
+    {
+      kind: "Open source · Web pública",
+      title: "PONT0S",
+      problem:
+        "Ver cómo está el mar exige saltar entre webs de cámaras y de previsión → toda la costa gallega en directo, con su tiempo, olas y marea, en una sola página.",
+      description:
+        "33 cámaras en 27 puntos de Ribadeo a A Guarda que se ven dentro de la web: fotos de MeteoGalicia y Windy que se renuevan solas y directos que arrancan con un clic. Cada punto trae el tiempo y el mar de Open-Meteo (olas, mar de fondo, agua, UV y la curva de la marea de hoy) y la bandera azul y la calidad del agua oficiales. El mapa es una carta náutica de noche dibujada en SVG con la costa de OpenStreetMap. Web estática en español y gallego, sin cookies ni claves, y una tarea semanal que comprueba que cada cámara sigue viva.",
+      tags: ["Astro 7", "TypeScript", "Open-Meteo", "SVG", "OpenStreetMap", "i18n es/gl", "GitHub Actions"],
+      demo: "pont0s",
+      status: { label: "en línea", tone: "live" },
+      cmd: "pont0s",
+      repo: "https://github.com/NotSaam/PONT0S",
+      link: "https://pont0s.vercel.app",
     },
     {
       kind: "Ciberseguridad · SOC",
