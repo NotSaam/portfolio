@@ -26,9 +26,40 @@ const BOIA = "#ff8a3d";
 const COAST =
   "M319 71L303 69L297 72L292 71L291 74L294 76L291 76L288 85L290 72L275 72L268 70L264 74L267 69L261 66L254 54L243 50L242 47L240 49L242 47L241 46L236 47L235 44L231 45L232 47L228 48L229 51L226 52L226 56L226 47L223 46L222 41L215 44L217 47L214 48L216 41L219 38L216 35L212 42L204 44L201 47L203 51L200 51L201 49L197 48L199 54L194 55L192 54L196 54L193 52L196 48L195 46L197 48L198 47L196 44L196 38L192 39L190 43L187 43L187 45L181 49L177 47L174 49L173 56L175 56L175 57L173 58L176 60L171 59L171 55L164 63L160 62L159 65L152 71L147 72L146 70L144 71L148 75L144 78L145 82L142 86L144 88L145 85L151 85L153 81L153 84L158 84L164 78L158 87L155 87L152 86L145 89L153 93L154 91L162 94L168 92L163 95L158 94L156 97L158 102L156 103L158 108L157 114L155 111L157 107L146 95L142 96L142 104L138 105L141 110L137 106L137 102L136 102L136 101L139 101L136 97L135 101L131 99L127 103L122 103L121 104L122 103L125 104L121 109L112 108L101 113L93 111L86 104L85 108L78 108L78 112L76 114L73 112L69 115L73 117L74 123L78 120L76 124L70 122L68 124L66 122L61 129L58 130L58 128L53 127L50 129L48 128L45 134L44 133L46 139L49 134L49 138L55 136L50 138L47 144L43 140L43 144L39 144L40 147L37 151L34 149L39 158L34 170L37 172L37 176L38 170L41 169L42 167L43 167L44 171L47 171L46 165L50 171L55 171L52 174L51 178L53 182L56 182L56 185L51 189L58 198L62 193L61 190L66 188L66 191L70 192L71 190L72 192L76 187L78 188L79 184L81 186L79 188L81 192L78 190L76 191L73 197L69 198L64 205L63 214L58 223L64 225L63 232L67 232L70 228L69 225L77 222L75 218L79 213L82 215L80 217L84 219L84 215L86 214L84 212L85 209L86 210L85 206L89 209L88 212L91 214L97 212L99 206L93 217L94 221L92 219L91 223L87 223L88 227L86 225L89 235L92 234L87 237L88 242L85 241L83 243L84 239L82 235L80 238L75 238L75 241L76 243L78 241L81 242L81 248L86 253L89 250L93 252L102 245L105 247L111 242L115 243L109 243L98 254L94 261L86 260L89 269L84 265L82 273L83 274L84 272L87 273L89 272L92 274L92 272L95 272L98 268L101 270L107 267L109 258L116 259L111 260L112 268L108 267L97 277L95 277L93 281L89 283L88 288L85 288L88 290L88 294L91 295L87 295L85 292L79 295L82 312L81 331L83 335L81 351L86 363L86 361L88 363L88 370L336 380L336 71Z";
 
-// Las 27 luces de la web: [x, y, id].
+// Las luces de la web (una por punto con cámara): [x, y, id].
 const LIGHTS: [number, number, string][] = [
-  [290,74,"ria-de-ribadeo"], [255,56,"burela"], [231,56,"covas"], [197,44,"porto-de-carino"], [175,49,"punta-candieira"], [154,83,"ria-de-ferrol"], [155,89,"redes"], [135,101,"orzan-riazor"], [139,101,"dique-de-abrigo"], [121,104,"langosteira-arteixo"], [48,138,"camarinas"], [43,141,"muxia"], [37,176,"cabo-fisterra"], [59,187,"louro"], [74,194,"portosin"], [65,226,"corrubedo"], [90,223,"coron"], [83,236,"o-grove"], [90,251,"silgar"], [88,251,"baltar"], [99,254,"aguete"], [76,254,"illa-de-ons"], [93,272,"cangas"], [79,278,"illas-cies"], [93,280,"samil"], [86,294,"baiona"], [82,327,"a-guarda"],
+  [290, 74, "ria-de-ribadeo"],
+  [255, 56, "burela"],
+  [231, 56, "covas"],
+  [197, 44, "porto-de-carino"],
+  [175, 49, "punta-candieira"],
+  [154, 83, "ria-de-ferrol"],
+  [155, 89, "redes"],
+  [135, 101, "orzan-riazor"],
+  [139, 101, "dique-de-abrigo"],
+  [121, 104, "langosteira-arteixo"],
+  [48, 138, "camarinas"],
+  [43, 141, "muxia"],
+  [37, 176, "cabo-fisterra"],
+  [59, 187, "louro"],
+  [74, 194, "portosin"],
+  [65, 226, "corrubedo"],
+  [90, 223, "coron"],
+  [83, 236, "o-grove"],
+  [90, 251, "silgar"],
+  [88, 251, "baltar"],
+  [99, 254, "aguete"],
+  [76, 254, "illa-de-ons"],
+  [93, 272, "cangas"],
+  [79, 278, "illas-cies"],
+  [93, 280, "samil"],
+  [86, 294, "baiona"],
+  [82, 327, "a-guarda"],
+  [162, 63, "a-frouxeira"],
+  [80, 189, "noia"],
+  [74, 189, "o-freixo"],
+  [99, 241, "castrove"],
+  [79, 295, "cabo-silleiro"],
 ];
 const PICK = "samil";
 
@@ -58,7 +89,7 @@ export default function PontosDemo({ playing = true }: DemoProps) {
           </div>
           <span className="flex items-center gap-1.5 font-mono text-[9px] text-muted">
             <span className="pulse-ring inline-block h-1.5 w-1.5 rounded-full" style={{ background: BOIA }} />
-            33 cámaras en directo
+            38 cámaras en directo
           </span>
         </div>
 
@@ -242,7 +273,7 @@ export default function PontosDemo({ playing = true }: DemoProps) {
             >
               <p className="flex items-center gap-2 text-[11px] text-ink">
                 <span className="pulse-ring inline-block h-1.5 w-1.5 rounded-full" style={{ background: BOIA }} />
-                <span className="font-medium">27 puntos de Ribadeo a A Guarda</span>
+                <span className="font-medium">32 puntos de Ribadeo a A Guarda</span>
                 <span className="font-mono text-[9px] text-muted">open source</span>
               </p>
             </motion.div>

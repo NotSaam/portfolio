@@ -188,7 +188,7 @@ export const site = {
       problem:
         "Ver cómo está el mar exige saltar entre webs de cámaras y de previsión → toda la costa gallega en directo, con su tiempo, olas y marea, en una sola página.",
       description:
-        "33 cámaras en 27 puntos de Ribadeo a A Guarda que se ven dentro de la web: fotos de MeteoGalicia y Windy que se renuevan solas y directos que arrancan con un clic. Cada punto trae el tiempo y el mar de Open-Meteo (olas, mar de fondo, agua, UV y la curva de la marea de hoy) y la bandera azul y la calidad del agua oficiales. El mapa es una carta náutica de noche dibujada en SVG con la costa de OpenStreetMap. Web estática en español y gallego, sin cookies ni claves, y una tarea semanal que comprueba que cada cámara sigue viva.",
+        "38 cámaras en 32 puntos de Ribadeo a A Guarda que se ven dentro de la web: fotos de MeteoGalicia y Windy que se renuevan solas y directos que arrancan con un clic. Cada punto trae el tiempo y el mar de Open-Meteo (olas, mar de fondo, agua, UV y la curva de la marea de hoy) y la bandera azul y la calidad del agua oficiales. El mapa es una carta náutica de noche dibujada en SVG con la costa de OpenStreetMap. Web estática en español y gallego, sin cookies ni claves, y una tarea semanal que comprueba que cada cámara sigue viva.",
       tags: ["Astro 7", "TypeScript", "Open-Meteo", "SVG", "OpenStreetMap", "i18n es/gl", "GitHub Actions"],
       demo: "pont0s",
       status: { label: "en línea", tone: "live" },
