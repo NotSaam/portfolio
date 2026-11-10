@@ -248,6 +248,7 @@ export const site = {
       demo: "reservas",
       status: { label: "MVP", tone: "mvp" },
       cmd: "ment0r",
+      repo: "https://github.com/NotSaam/ment0r-showcase",
     },
     {
       kind: "Sistema operativo · El proyecto soñado",
