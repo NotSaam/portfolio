@@ -17,4 +17,6 @@ export const demoRegistry: Record<DemoId, LazyExoticComponent<ComponentType<Demo
   krit0s: lazy(() => import("./KritosDemo")),
   synk0s: lazy(() => import("./SynkosDemo")),
   pont0s: lazy(() => import("./PontosDemo")),
+  kyb0s: lazy(() => import("./KybosDemo")),
+  grafik0s: lazy(() => import("./GrafikosDemo")),
 };

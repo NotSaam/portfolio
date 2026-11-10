@@ -6,7 +6,7 @@
  */
 
 /** Identificadores de las demos interactivas (animadas en navegador). */
-export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s" | "synk0s" | "pont0s";
+export type DemoId = "flk0s" | "kairos" | "flakos" | "reservas" | "krit0s" | "synk0s" | "pont0s" | "kyb0s" | "grafik0s";
 
 export interface Project {
   /** Etiqueta pequeña sobre el título (p. ej. "App web", "Ciberseguridad") */
@@ -106,7 +106,7 @@ export const site = {
       { cmd: true, text: "cat stack.txt" },
       { cmd: false, text: "next · react · python · fastapi · postgres · supabase · rust" },
       { cmd: true, text: "ls ~/proyectos" },
-      { cmd: false, text: "kair0s/  krit0s/  synk0s/  pont0s/  phar0s/  ment0r/  flak0s/" },
+      { cmd: false, text: "kair0s/  kyb0s/  krit0s/  synk0s/  pont0s/  grafik0s/  phar0s/  ment0r/  flak0s/" },
       { cmd: true, text: "status --formacion" },
       { cmd: false, text: "máster en ciberseguridad [█████░░ en curso]" },
     ],
@@ -195,6 +195,34 @@ export const site = {
       cmd: "pont0s",
       repo: "https://github.com/NotSaam/PONT0S",
       link: "https://pont0s.vercel.app",
+    },
+    {
+      kind: "Casino social · Provably fair",
+      title: "KYB0S",
+      problem:
+        "En un casino online tienes que fiarte de la casa → cada tirada se puede comprobar con matemáticas públicas, desde tu navegador.",
+      description:
+        "Doce juegos (Crash multijugador en tiempo real, Dice, Mines, Plinko, Ruleta europea…) con fichas que no valen nada: ni se retiran ni se cambian por dinero. Antes de apostar, el servidor publica el hash SHA-256 de su semilla; el resultado sale de un HMAC público y el verificador lo recalcula paso a paso. Motor con WebSocket de tickets de un solo uso, libro de doble partida, juego responsable con límites, pausas y autoexclusión, e2e en Chromium y WebKit con axe, y arte 3D propio hecho en Blender.",
+      tags: ["TypeScript", "Next.js", "PostgreSQL 17", "Redis", "WebSocket", "Zod", "Playwright", "Blender"],
+      demo: "kyb0s",
+      wip: true,
+      status: { label: "en desarrollo", tone: "wip" },
+      cmd: "kyb0s",
+      repo: "https://github.com/NotSaam/kyb0s-showcase",
+    },
+    {
+      kind: "Trading automático · MetaTrader 5",
+      title: "GRAFIK0S",
+      problem:
+        "Perder una cuenta de fondeo por saltarte una sola norma → un bot que las respeta todas, cuenta a cuenta.",
+      description:
+        "Opera solo en varias cuentas de fondeo (FTMO, The5ers, FundingPips, FundedNext) sobre MetaTrader 5, con un proceso y una terminal por cuenta para que el fallo de una no tumbe a las demás. El gestor de riesgo calcula cada lote dentro de los límites de la firma y la fase, las noticias rojas bloquean entradas y el backtest simula si habría aprobado el examen. Panel en vivo con FastAPI y HTMX, usable desde el móvil.",
+      tags: ["Python", "MetaTrader 5", "FastAPI", "HTMX", "SQLite", "pytest"],
+      demo: "grafik0s",
+      wip: true,
+      status: { label: "pruebas en demo", tone: "wip" },
+      cmd: "grafik0s",
+      repo: "https://github.com/NotSaam/grafik0s-showcase",
     },
     {
       kind: "Ciberseguridad · SOC",
